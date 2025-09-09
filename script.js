@@ -1,21 +1,16 @@
-// Fetch the image URL from your backend
-fetch("http://localhost:3268")
-  .then(response => response.json())
-  .then(data => {
-    const img = document.getElementById("unsplash-image");
-    img.src = data.url; // Set the image source
-  })
-  .catch(error => {
-    console.error("Error fetching image:", error);
-    // Optional: Set a fallback image
-    document.getElementById("unsplash-image").src = "default.jpg";
-  });
-
-// Update the image every 5 seconds
-setInterval(() => {
-  fetch("http://localhost:3268")
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById("unsplash-image").src = data.url;
-    });
-}, 5000);
+// Fetch a new image from the backend when the page loads
+window.onload = function() {
+    fetch("http://localhost:3268")
+      .then(response => response.json())
+      .then(data => {
+        const body = document.body;
+        // Make sure to add quotes around the URL
+        body.style.backgroundImage = `url('${data.url}')`;
+        body.style.backgroundSize = 'cover';
+        body.style.backgroundPosition = 'center';
+      })
+      .catch(error => {
+        console.error("Error fetching image:", error);
+        // Optional: Set a fallback background image in case of error
+      });
+};
