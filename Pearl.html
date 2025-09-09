@@ -1,21 +1,31 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-  <meta charset="UTF-8">
- 
-  <title>PEARL // 𝕹𝖊𝖔𝖓 𝕲𝖍𝖔𝖘𝖙</title>
-  
-  <link rel="stylesheet" href="style.css">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🩷PEARL</title>
+  <link rel="stylesheet" href="pearlstyle.css">
 </head>
-
 <body>
+  <script>
+    // Function to fetch a random image from your backend
+    async function getRandomImage() {
+      try {
+        const response = await fetch("http://localhost:3268/random-image");
+        const data = await response.json();
+        document.body.style.backgroundImage = `url('${data.url}')`;
+      } catch (error) {
+        console.error("It's fucked, mate. 🩷", error);
+        // Fallback background
+        document.body.style.backgroundImage = "url('/imges/default.jpg')";
+      }
+    }
 
- COMING SOON :>
-  
+    // Change background every 5 seconds
+    setInterval(getRandomImage, 5000);
+
+    // Initial load
+    getRandomImage();
+  </script>
 </body>
-
 </html>
