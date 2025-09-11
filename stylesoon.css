@@ -1,0 +1,44 @@
+body {
+  background-color: #000000;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 1️⃣ Center the container both horizontally and vertically */
+.comingsoon {
+    /* Make the container fill the whole viewport */
+    min-height: 100vh;               /* ensures vertical centering works */
+    display: flex;
+    align-items: center;            /* vertical alignment */
+    justify-content: center;        /* horizontal alignment */
+    flex-direction: column;         /* stack image & fallback vertically */
+}
+
+/* 2️⃣ Image sizing – full width on large screens, limited height */
+.imgcenter {
+    max-width: 100%;                /* never exceed container width */
+    height: auto;                   /* keep aspect ratio */
+}
+
+/* 3️⃣ Show the image on ≥750 px, hide the fallback text */
+@media (min-width: 750px) {
+    .fallback-text { display: none; }
+}
+
+/* 4️⃣ On <750 px, hide the image and show the fallback text */
+@media (max-width: 749px) {
+    .responsive-img { display: none; }
+    .fallback-text {
+        display: block;
+        font-size: 1rem;           /* style as you like */
+        text-align: center;
+        margin: 0 1rem;            /* optional padding */
+    }
+}

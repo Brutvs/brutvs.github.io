@@ -1,0 +1,31 @@
+@@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+import { SparklesText } from "@/components/magicui/sparkles-text";
+
+body {
+  background: #000
+}
+
+.time {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 1800;
+  font-style: bold;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 0;
+}
+
+/* This is the key change: only the active background should be visible */
+.background.visible {
+  opacity: 1;
+  z-index: 1;
+}
